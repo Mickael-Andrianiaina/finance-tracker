@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comptes — Finance Tracker</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+  <a href="../../index.html" class="header-brand">
+    <div class="brand-icon">💰</div>
+    <h1>Finance Tracker</h1>
+  </a>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <nav>
+    <a href="../../index.html">Dashboard</a>
+    <a href="accounts.html" class="active">Comptes</a>
+    <a href="categories.html">Catégories</a>
+    <a href="transactions.html">Transactions</a>
+    <a href="summary.html">Résumé</a>
+  </nav>
+</header>
+
+<main class="container">
+  <div class="grid-layout">
+
+    <section class="card">
+      <h3>Créer un compte</h3>
+      <div class="form-group">
+        <label for="name">Nom du compte</label>
+        <div class="input-icon-wrapper">
+          <span class="input-icon">🏷</span>
+          <input id="name" placeholder="ex: Compte Courant, Épargne…" autocomplete="off">
+        </div>
+        <div class="field-hint hint-info" id="hint-name">Choisissez un nom unique pour ce compte.</div>
+      </div>
+      <div class="form-group">
+        <label for="type">Type de compte</label>
+        <select id="type">
+          <option value="cash">💵 Espèces (Cash)</option>
+          <option value="checking">🏦 Compte Courant</option>
+          <option value="savings">🐖 Épargne</option>
+          <option value="investment">📈 Investissement</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="balance">Solde initial (Ar)</label>
+        <div class="input-icon-wrapper">
+          <span class="input-icon">💰</span>
+          <input id="balance" type="number" step="0.01" min="0.01" placeholder="ex: 50000">
+        </div>
+        <div class="field-hint" id="hint-balance">
+          <span>⚠ Le solde doit être strictement supérieur à 0.</span>
+        </div>
+      </div>
+      <button onclick="createAccount()">➕ Créer le compte</button>
+    </section>
+
+    <section class="card">
+      <div class="card-title-row">
+        <h3>Comptes actifs</h3>
+        <span class="count-badge" id="accounts-count">…</span>
+      </div>
+      <div id="accountsList" class="item-list">
+        <div class="skeleton" style="height:64px;border-radius:10px;"></div>
+        <div class="skeleton" style="height:64px;border-radius:10px;margin-top:.75rem;"></div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/accounts.js"></script>
+</body>
+</html>

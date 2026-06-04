@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Résumé Mensuel — Finance Tracker</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <header>
+    <a href="../../index.html" class="header-brand">
+      <div class="brand-icon">💰</div>
+      <h1>Finance Tracker</h1>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav>
+      <a href="../../index.html">Dashboard</a>
+      <a href="accounts.html">Comptes</a>
+      <a href="categories.html">Catégories</a>
+      <a href="transactions.html">Transactions</a>
+      <a href="summary.html" class="active">Résumé</a>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <section class="card" style="margin-bottom:1.5rem">
+      <h3>Filtres du résumé</h3>
+      <div class="filter-section">
+        <div class="filter-group">
+          <label for="account_id">Compte</label>
+          <select id="account_id" onchange="loadSummary()"></select>
+        </div>
+        <div class="filter-group">
+          <label for="month">Mois</label>
+          <input type="month" id="month" onchange="loadSummary()">
+        </div>
+      </div>
+    </section>
+
+    <section class="dashboard-grid">
+      <div class="metric-card metric-income">
+        <div class="metric-label">Total Revenus</div>
+        <div class="metric-icon">↑</div>
+        <p class="amount-val" id="income">0,00 Ar</p>
+      </div>
+      <div class="metric-card metric-expense">
+        <div class="metric-label">Total Dépenses</div>
+        <div class="metric-icon">↓</div>
+        <p class="amount-val" id="expense">0,00 Ar</p>
+      </div>
+      <div class="metric-card metric-net">
+        <div class="metric-label">Solde Net</div>
+        <div class="metric-icon">≈</div>
+        <p class="amount-val" id="net">0,00 Ar</p>
+      </div>
+    </section>
+
+    <div class="grid-layout">
+      <section class="card">
+        <h3>Répartition des dépenses</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Catégorie</th>
+                <th>Total dépensé</th>
+              </tr>
+            </thead>
+            <tbody id="categoryTable">
+              <tr>
+                <td colspan="2" style="text-align:center;color:var(--text-secondary);padding:2rem;">Aucune donnée</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Progression des budgets</h3>
+        <div id="progress" class="item-list" style="margin-top:0.5rem;">
+          <p style="color:var(--text-secondary);text-align:center;padding:1rem 0;">
+            Sélectionnez un compte et un mois.
+          </p>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/summary.js"></script>
+</body>
+
+</html>
