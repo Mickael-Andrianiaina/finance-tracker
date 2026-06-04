@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Finance Tracker</title>
+  <link rel="stylesheet" href="frontend/assets/css/styles.css">
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="header-brand">
+    <div class="brand-icon">💰</div>
+    <h1>Finance Tracker</h1>
+  </a>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <nav>
+    <a href="index.html" class="active">Dashboard</a>
+    <a href="frontend/assets/accounts.html">Comptes</a>
+    <a href="frontend/assets/categories.html">Catégories</a>
+    <a href="frontend/assets/transactions.html">Transactions</a>
+    <a href="frontend/assets/summary.html">Résumé</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <section class="card" style="margin-bottom:1.5rem">
+    <h3>Vue d'ensemble</h3>
+    <div class="filter-section">
+      <div class="filter-group">
+        <label for="account_id">Compte</label>
+        <select id="account_id" onchange="updateDashboard()"></select>
+      </div>
+      <div class="filter-group">
+        <label for="month">Mois</label>
+        <input type="month" id="month" onchange="updateDashboard()">
+      </div>
+    </div>
+  </section>
+
+  <section class="dashboard-grid">
+    <div class="metric-card metric-income">
+      <div class="metric-label">Revenus</div>
+      <div class="metric-icon">↑</div>
+      <p class="amount-val" id="income">0,00 Ar</p>
+    </div>
+    <div class="metric-card metric-expense">
+      <div class="metric-label">Dépenses</div>
+      <div class="metric-icon">↓</div>
+      <p class="amount-val" id="expense">0,00 Ar</p>
+    </div>
+    <div class="metric-card metric-net">
+      <div class="metric-label">Solde Net</div>
+      <div class="metric-icon">≈</div>
+      <p class="amount-val" id="net">0,00 Ar</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h3>Détails par catégorie</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Catégorie</th><th>Montant total dépensé</th></tr>
+        </thead>
+        <tbody id="byCategory">
+          <tr><td colspan="2" style="text-align:center;color:var(--text-secondary);padding:2rem;">Aucune donnée à afficher</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<script src="frontend/assets/js/api.js"></script>
+<script src="frontend/assets/js/ui.js"></script>
+<script src="frontend/app.js"></script>
+</body>
+</html>
